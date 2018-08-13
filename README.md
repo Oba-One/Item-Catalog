@@ -3,7 +3,7 @@ The fourth project in Udacity's full stack development nanodegree program.
 
 ## Project Overview
 
-The project requires students to build an item catalog app allowing user to view products as well as add, edit, and delete. Along with OAuth authentication to ensure only signed in users can modify products. 
+The project requires students to build an item catalog app allowing user to view products as well as add, edit, and delete. Along with OAuth authentication to ensure only signed in users can modify products. The project is a continuation of the restaurant project started in previous lessons. 
 
 ## Requirements for Project
 
