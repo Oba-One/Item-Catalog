@@ -26,7 +26,7 @@ The project requires students to build an item catalog app allowing user to view
 
 7. **Cd** into **catalog** directory where the project is located.
 
-7. Run **python project.py** to start the server and access the project at [localhost:8000](http://localhost:8000/).
+7. Run **python application.py** to start the server and access the project at [localhost:8000](http://localhost:8000/).
 
 8. You can now view the project, login and add your favorite restaurants and cusines!
 
