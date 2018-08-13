@@ -12,7 +12,7 @@ The project requires students to build an item catalog app allowing user to view
 
 ## How to access project?
 
-1. If not already install, download Vagrant [You can download it from vagrantup.com.](https://www.vagrantup.com/downloads)
+1. If not already install, download Vagrant [download from vagrantup.com.](https://www.vagrantup.com/downloads)
 
 2. Download or clone the repository to your local machine.
 
@@ -24,9 +24,9 @@ The project requires students to build an item catalog app allowing user to view
 
 6. Type the command **cd /vagrant** to access the shared directory and project.
 
-7. **Cd** into **app** directory where the project is located.
+7. **Cd** into **catalog** directory where the project is located.
 
-7. Run **python project.py** to start the server and access the project at [localhost:5000](http://localhost:5000/).
+7. Run **python project.py** to start the server and access the project at [localhost:8000](http://localhost:8000/).
 
 8. You can now view the project, login and add your favorite restaurants and cusines!
 
