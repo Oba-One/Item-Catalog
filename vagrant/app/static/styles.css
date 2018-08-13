@@ -161,3 +161,22 @@ u }
 	text-align: center;
 
 }
+
+.signin {
+	display: flex;
+	justify-items: center;
+	align-items: center;
+	height: 100vh;
+	width: 100vw;
+	box-shadow: 2px 2px 2px palegreen;
+}
+
+.google-signin {
+	padding: 20px;
+	margin: 0 auto;
+}
+
+.facebook-signin {
+	padding: 20px;
+	margin: 0 auto;
+}

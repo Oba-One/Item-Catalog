@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-
+  <link href='http://fonts.googleapis.com/css?family=Roboto:400,300,700' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+  <link rel=stylesheet type=text/css href="{{ url_for('static', filename='styles.css') }}">
   <!--LOAD PRE-REQUISITES FOR GOOGLE SIGN IN -->
   <script 
     src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js">
@@ -10,11 +12,13 @@
     src="//apis.google.com/js/platform.js?onload=start">
   </script>
   <!-- END PRE-REQUISITES FOR GOOGLE SIGN IN -->
-
 </head>
-<body>  
+<body>
+  <!-- CONTAINERS -->
+  <div class="container">  
   <!-- SIGN IN CONTAINER-->
-  <section class="signin-container">  
+  <section class="row signin"> 
+
     <!-- GOOGLE PLUS SIGN IN BUTTON-->
     <div class="google-signin">     
       <div id="signinButton">
@@ -30,15 +34,15 @@
       </div>
 
     </div>
+
     <!-- FACEBOOK SIGN IN BUTTON-->
-    <div class="facebook-signin">
-      <button>
+      <button class="facebook-signin">
         <fb:login-button scope="public_profile,email" onlogin="sendTokenToServer();">
         <a href='javascript:sendTokenToServer()'>Login with Facebook</a>
         </fb:login-button>
       </button>
-    </div>
   </section>
+  </div>
   <div id="result"></div>
       
 <!--Google SIGN IN SCRIPT-->
