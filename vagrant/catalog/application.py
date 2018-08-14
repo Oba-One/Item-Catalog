@@ -249,10 +249,10 @@ def gconnect():
     output += '<img src="'
     output += login_session['picture']
     output += ' " style = "width: 300px;' \
-    'height: 300px;' \
-    'border-radius: 150px;' \
-    '-webkit-border-radius: 150px;' \
-    '-moz-border-radius: 150px;"> '
+        'height: 300px;' \
+        'border-radius: 150px;' \
+        '-webkit-border-radius: 150px;' \
+        '-moz-border-radius: 150px;"> '
 
     flash("you are now logged in as %s" % login_session['username'])
     print "done!"
@@ -344,10 +344,10 @@ def showRestaurants():
     restaurants = session.query(Restaurant).order_by(asc(Restaurant.name))
     if 'username' not in login_session:
         return render_template('publicrestaurants.html',
-                                restaurants=restaurants)
+            restaurants=restaurants)
     else:
         return render_template('restaurants.html',
-                                restaurants=restaurants)
+            restaurants=restaurants)
 
 
 # Create a new restaurant
@@ -368,7 +368,7 @@ def newRestaurant():
 
 # Edit a restaurant
 @app.route('/restaurant/<int:restaurant_id>/edit/',
-            methods=['GET', 'POST'])
+    methods=['GET', 'POST'])
 def editRestaurant(restaurant_id):
     if 'username' not in login_session:
         return redirect('/login')
@@ -386,12 +386,12 @@ def editRestaurant(restaurant_id):
             return redirect(url_for('showRestaurants'))
     else:
         return render_template('editRestaurant.html',
-                                restaurant=editedRestaurant)
+            restaurant=editedRestaurant)
 
 
 # Delete a restaurant
 @app.route('/restaurant/<int:restaurant_id>/delete/',
-            methods=['GET', 'POST'])
+    methods=['GET', 'POST'])
 def deleteRestaurant(restaurant_id):
     if 'username' not in login_session:
         return redirect('/login')
@@ -410,7 +410,7 @@ def deleteRestaurant(restaurant_id):
                         restaurant_id=restaurant_id))
     else:
         return render_template('deleteRestaurant.html',
-                                restaurant=restaurantToDelete)
+            restaurant=restaurantToDelete)
 
 
 # Show a restaurant menu
@@ -439,7 +439,7 @@ def showMenu(restaurant_id):
 
 # Create a new menu item
 @app.route('/restaurant/<int:restaurant_id>/menu/new/',
-            methods=['GET', 'POST'])
+    methods=['GET', 'POST'])
 def newMenuItem(restaurant_id):
     if 'username' not in login_session:
         return redirect('/login')
@@ -467,7 +467,7 @@ def newMenuItem(restaurant_id):
 
 # Edit a menu item
 @app.route('/restaurant/<int:restaurant_id>/menu/<int:menu_id>/edit',
-            methods=['GET', 'POST'])
+    methods=['GET', 'POST'])
 def editMenuItem(restaurant_id, menu_id):
     if 'username' not in login_session:
         return redirect('/login')
@@ -501,7 +501,7 @@ def editMenuItem(restaurant_id, menu_id):
 
 # Delete a menu item
 @app.route('/restaurant/<int:restaurant_id>/menu/<int:menu_id>/delete',
-            methods=['GET', 'POST'])
+    methods=['GET', 'POST'])
 def deleteMenuItem(restaurant_id, menu_id):
     if 'username' not in login_session:
         return redirect('/login')
