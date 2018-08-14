@@ -317,15 +317,16 @@ def disconnect():
 # JSON APIs ENDPOINTS
 @app.route('/restaurant/<int:restaurant_id>/menu/JSON')
 def restaurantMenuJSON(restaurant_id):
-    restaurant = session.query(Restaurant).filter_by(id=restaurant_id).one()
-    items = session.query(MenuItem)
-    .filter_by(restaurant_id=restaurant_id).all()
+    restaurant = session.query(Restaurant).filter_by(
+        id=restaurant_id).one()
+    items = session.query(MenuItem).filter_by(restaurant_id=restaurant_id).all()
     return jsonify(MenuItems=[i.serialize for i in items])
 
 
 @app.route('/restaurant/<int:restaurant_id>/menu/<int:menu_id>/JSON')
 def menuItemJSON(restaurant_id, menu_id):
-    Menu_Item = session.query(MenuItem).filter_by(id=menu_id).one()
+    Menu_Item = session.query(MenuItem).filter_by(
+        id=menu_id).one()
     return jsonify(Menu_Item=Menu_Item.serialize)
 
 
@@ -341,7 +342,8 @@ def restaurantsJSON():
 @app.route('/')
 @app.route('/restaurant/')
 def showRestaurants():
-    restaurants = session.query(Restaurant).order_by(asc(Restaurant.name))
+    restaurants = session.query(Restaurant).order_by(
+        asc(Restaurant.name))
     if 'username' not in login_session:
         return render_template('publicrestaurants.html',
             restaurants=restaurants)
@@ -372,8 +374,8 @@ def newRestaurant():
 def editRestaurant(restaurant_id):
     if 'username' not in login_session:
         return redirect('/login')
-    editedRestaurant = session.query(Restaurant)
-    .filter_by(id=restaurant_id).one()
+    editedRestaurant = session.query(Restaurant).filter_by(
+        id=restaurant_id).one()
     if editedRestaurant.user_id != login_session['user_id']:
         return "<script>function myFunction() {alert('You are not \
         authorized to edit this restaurant. Please create \
@@ -395,8 +397,8 @@ def editRestaurant(restaurant_id):
 def deleteRestaurant(restaurant_id):
     if 'username' not in login_session:
         return redirect('/login')
-    restaurantToDelete = session.query(Restaurant)
-    .filter_by(id=restaurant_id).one()
+    restaurantToDelete = session.query(Restaurant).filter_by(
+        id=restaurant_id).one()
     if restaurantToDelete.user_id != login_session['user_id']:
         return "<script>function myFunction() {alert('You are not \
         authorized to delete this restaurant. Please create \
@@ -417,13 +419,12 @@ def deleteRestaurant(restaurant_id):
 @app.route('/restaurant/<int:restaurant_id>/')
 @app.route('/restaurant/<int:restaurant_id>/menu/')
 def showMenu(restaurant_id):
-    restaurant = session.query(Restaurant)
-    .filter_by(id=restaurant_id).one()
-    items = session.query(MenuItem)
-    .filter_by(restaurant_id=restaurant_id).all()
+    restaurant = session.query(Restaurant).filter_by(
+        id=restaurant_id).one()
+    items = session.query(MenuItem).filter_by(
+        restaurant_id=restaurant_id).all()
     creator = getUserInfo(restaurant.user_id)
-    if 'username' not in login_session
-    or creator.id != login_session['user_id']:
+    if 'username' not in login_session or creator.id != login_session['user_id']:
         return render_template(
             'publicmenu.html',
             items=items,
@@ -505,13 +506,13 @@ def editMenuItem(restaurant_id, menu_id):
 def deleteMenuItem(restaurant_id, menu_id):
     if 'username' not in login_session:
         return redirect('/login')
+    restaurant = session.query(Restaurant).filter_by(id=restaurant_id).one()
+    itemToDelete = session.query(MenuItem).filter_by(id=menu_id).one()
     if login_session['user_id'] != restaurant.user_id:
         return "<script>function myFunction() {alert('You are not authorized \
         to delete menu items to this restaurant. Please create your own \
         restaurant in order to delete items.');} </script> <body onload \
         ='myFunction()''>"
-    restaurant = session.query(Restaurant).filter_by(id=restaurant_id).one()
-    itemToDelete = session.query(MenuItem).filter_by(id=menu_id).one()
     if request.method == 'POST':
         session.delete(itemToDelete)
         session.commit()
